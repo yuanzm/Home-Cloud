@@ -5,9 +5,6 @@ from url import url
 
 import os.path
 import tornado.web
-import tornado.wsgi
-
-import sae
 
 setting = dict(
     template_path=os.path.join(os.path.dirname(__file__),"template"),
@@ -17,7 +14,7 @@ setting = dict(
     cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo="
 )
 
-application = tornado.wsgi.WSGIApplication(
+application = tornado.web.Application(
     handlers=url,
     **setting
 )
