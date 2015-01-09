@@ -8,8 +8,14 @@ sys.setdefaultencoding('utf-8')
 
 from handler.models import IndexHandler
 from handler.models import HTTP404Error
+from handler.models import RegistHandler
+from handler.models import LoginHandler
+from handler.models import PicHandler
 
 url = [
     (r'/', IndexHandler),
+    (r'/regist', RegistHandler),
+    (r'/login', LoginHandler),
+    (r'/pic', PicHandler),
     (r'.*', HTTP404Error)
 ]

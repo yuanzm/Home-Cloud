@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block header %}
+   {% module Header() %}
+{% end %}
+
+{% block main %}
+   {% module Logo()%}
+   {% module Sign(False)%}
+{% end %}
+
+{% block footer %}
+   {% module Footer() %}
+{% end %}
