@@ -4,7 +4,6 @@ class User:
 		self.name = name
 		self.password = password
 	def saveUser(self):
-		coll = self.db.users
-		admin = coll.find_ond({"name": "admin"});
+		coll = self.db
+		admin = coll.find_one({"name": "admin"});
 		print admin
-
