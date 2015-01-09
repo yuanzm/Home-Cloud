@@ -8,7 +8,7 @@ import tornado.web
 
 setting = dict(
     template_path=os.path.join(os.path.dirname(__file__),"template"),
-    static_path=os.path.join(os.path.dirname(__file__),"public/bin"),
+    static_path=os.path.join(os.path.dirname(__file__),"public"),
     autoescape=None,
     debug=True,
     cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo="
