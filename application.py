@@ -7,7 +7,7 @@ import os.path
 import tornado.web
 import pymongo
 
-from handler.uimodule import ui_modules
+from routes.uimodule import ui_modules
 
 setting = dict(
     template_path=os.path.join(os.path.dirname(__file__),"template"),
@@ -28,4 +28,5 @@ class Application(tornado.web.Application):
         handlers=url
         conn = pymongo.Connection("localhost", 27017)
         self.db = conn["Home-Cloud"]
+        # self.db.user.insert({"name":"admin","password": "123456"})
         tornado.web.Application.__init__(self, handlers, **setting)

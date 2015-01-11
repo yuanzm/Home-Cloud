@@ -5,7 +5,26 @@
 {% end %}
 
 {% block main %}
-	
+	<!-- {% module Logo()%} -->
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          来自妈妈
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      	<a href="/pic/detail">
+       		<span class="glyphicon glyphicon-edit"></span>      		
+      	</a>
+        <span class="glyphicon glyphicon-thumbs-up red"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% end %}
 
 {% block footer %}
