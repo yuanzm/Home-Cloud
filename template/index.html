@@ -1,9 +1,5 @@
 {% extends "layout.html" %}
 
-{% block header %}
-	{% module Header(name) %}
-{% end %}
-
 {% block main %}
 	{% module Logo()%}
 	<div id="menu-logo">
@@ -16,12 +12,12 @@
 			<div class="a-menu-logo">
 				<a href="/video">
 					<img class="video-logo" src="{{static_url("asserts/images/video-logo.jpg")}}" alt="video-logo">	
-				<a/>				
+				</a>				
 			</div>
 		</div>
 	</div>
 {% end %}
 
 {% block footer %}
-	{% module Footer() %}
+   {% module Footer() %}
 {% end %}

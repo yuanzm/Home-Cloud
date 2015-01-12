@@ -18,4 +18,3 @@ class addLikeToPictureHandler(tornado.web.RequestHandler):
 		time = self.get_argument("time", None)
 		like = Like(coll, author, title, time)
 		like.changeLike(likeNum)
-

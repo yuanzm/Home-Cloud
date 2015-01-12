@@ -1,15 +1,28 @@
-#header nav.navbar {
+html,body {
+	height: 100%;
+	width: 100%;
+}
+#wrapper {
+	min-height:100%;
+	height: auto !important;
+	height: 100%; /*IE6不识别min-height*/
+	position: relative;
+}
+header { 
+	position: absolute;
+	width: 100%;
+	top: 0;
 	z-index: 1;
 }
 #main {
+	padding-top: 70px;
 	padding-bottom: 50px;
+	overflow: hidden;
 }
 #menu-logo {
 	width :100%;
-	margin-top: 100px;
-	position: absolute;
-	z-index: -1;
-	top: 200px;
+	height: 150px;
+	margin-top: 80px;
 	.logo-set {
 		width: 80%;
 		height: 100px;
@@ -22,7 +35,11 @@
 			float: left;
 			vertical-align: middle;
 			position: relative;
+			a {
+				display: block;
+			}
 			img {
+				
 				position: absolute;
 				left: 50%;
 				top: 50%;

@@ -33,7 +33,7 @@ class IndexHandler(tornado.web.RequestHandler):
         # pic.savePicture()
         # like = Like(coll, "yuanzm", "heihei", "20100413")
         # like.changeLike(1)
-        self.render('index.html', title="HomeCloud", name=name)
+        self.render('index.html', title="HomeCloud", name=name, page=1)
 
 class RegistHandler(tornado.web.RequestHandler):
     def get(self):
@@ -41,7 +41,7 @@ class RegistHandler(tornado.web.RequestHandler):
         if name:
             self.redirect('/')
         else:
-            self.render('sign.html', title="Regist", signType="signup")
+            self.render('sign.html', title="Regist", signType="signup", name=name, page="signup")
     def post(self):
         coll = self.application.db
         name = self.get_argument("name", None)
@@ -63,7 +63,7 @@ class LoginHandler(tornado.web.RequestHandler):
         if name:
             self.redirect('/')
         else:
-            self.render('sign.html', title="Login", signType="login")
+            self.render('sign.html', title="Login", signType="login", name=name, page=1)
     def post(self):
         coll = self.application.db
         name = self.get_argument("name", None)
@@ -85,26 +85,29 @@ class PicHandler(tornado.web.RequestHandler):
         coll = self.application.db
         pictures = loadPicture(coll)
         name = self.get_secure_cookie("user")
-        self.render('data-list.html', title="Picture", datalist=pictures, dataType="pic", name=name)
+        self.render('data-list.html', title="Picture", datalist=pictures, dataType="pic", name=name, page=1)
 
 
 class PicDetailHandler(tornado.web.RequestHandler):
     def get(self, picId):
         coll = self.application.db
         picture = getPicture(coll, picId)
-        self.render('data-detail.html', title="pic",data=picture, dataType="pic")
+        name = self.get_secure_cookie("user")
+        self.render('data-detail.html', title="pic",data=picture, dataType="pic",name=name, page=1)
 
 class VideoHandler(tornado.web.RequestHandler):
     def get(self):
         coll = self.application.db
         videos = loadVideos(coll)
+        name = self.get_secure_cookie("user")
         # video = Video(coll, "yuanzm", "真好看")
         # video.saveVideo()
-        self.render('data-list.html', title="video",datalist=videos, dataType="video")
+        self.render('data-list.html', title="video",datalist=videos, dataType="video", name=name, page=1)
 
 class VideoDetailHandler(tornado.web.RequestHandler):
     def get(self, videoId):
         coll = self.application.db
-        video = getVideo(coll, videoId);
+        video = getVideo(coll, videoId)
+        name = self.get_secure_cookie("user")
         # print video["likes"]
-        self.render('data-detail.html', title="Picture-detail", data = video, dataType="video")
+        self.render('data-detail.html', title="Video-detail", data = video, dataType="video", name=name, page=1)
