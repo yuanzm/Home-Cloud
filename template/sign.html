@@ -5,8 +5,13 @@
 {% end %}
 
 {% block main %}
-   {% module Logo()%}
-   {% module Sign(True)%}
+   	{% module Logo()%}
+
+   	{% if signType is "login"%}	
+   		{% module Sign(False)%}
+   	{% else %}
+   		{% module Sign(True)%}
+   	{% end %}
 {% end %}
 
 {% block footer %}

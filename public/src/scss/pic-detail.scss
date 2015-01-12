@@ -31,3 +31,17 @@
 		}
 	}
 }
+
+#comment-input {
+	border: none;
+	border-bottom: 1px solid #ccc;
+	background: transparent;
+	width: 100%;
+	font-size: 18px;
+	line-height: 1.05;
+	font-family: inherit;
+	height: 26px;
+	outline: none;
+	word-break: break-all;
+	resize: none;
+}

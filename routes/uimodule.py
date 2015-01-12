@@ -5,8 +5,8 @@ import os.path
 import tornado.web
 
 class HeaderModule(tornado.web.UIModule):
-	def render(self):
-		return self.render_string('modules/header.html')
+	def render(self, name):
+		return self.render_string('modules/header.html', name=name)
 
 class LogoModule(tornado.web.UIModule):
 	def render(self):

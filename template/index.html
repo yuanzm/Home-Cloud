@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block header %}
-	{% module Header() %}
+	{% module Header(name) %}
 {% end %}
 
 {% block main %}
@@ -14,7 +14,9 @@
 				</a>
 			</div>
 			<div class="a-menu-logo">
-				<img class="video-logo" src="{{static_url("asserts/images/video-logo.jpg")}}" alt="video-logo">					
+				<a href="/video">
+					<img class="video-logo" src="{{static_url("asserts/images/video-logo.jpg")}}" alt="video-logo">	
+				<a/>				
 			</div>
 		</div>
 	</div>

@@ -10,14 +10,21 @@ from routes.index import IndexHandler
 from routes.index import HTTP404Error
 from routes.index import RegistHandler
 from routes.index import LoginHandler
+from routes.index import LogoutHandler
 from routes.index import PicHandler
 from routes.index import PicDetailHandler
+from routes.index import VideoHandler
+from routes.index import VideoDetailHandler
+
 
 url = [
     (r'/', IndexHandler),
+    (r'/logout', LogoutHandler),
     (r'/regist', RegistHandler),
     (r'/login', LoginHandler),
     (r'/pic', PicHandler),
-    (r'/pic/detail', PicDetailHandler),
+    (r'/pic/(\w+)', PicDetailHandler),
+    (r'/video/(\w+)', VideoDetailHandler),
+    (r'/video', VideoHandler),
     (r'.*', HTTP404Error)
 ]
