@@ -2,8 +2,7 @@ import datetime
 from bson.objectid import ObjectId
 
 class Comment(object):
-	def __init__(self, db, _id, content, commenter):
-		self.db = db
+	def __init__(self, _id, content, commenter):
 		self._id = _id
 		self.commenter = commenter
 		self.content = content
@@ -11,7 +10,7 @@ class Comment(object):
 		self.time = now.strftime("%Y-%m-%d %H:%M:%S")
 
 	def addComment(self):
-		coll = self.db.pictures
+		coll = db.pictures
 		comment = {
 			"commenter": self.commenter,
 			"time": self.time,
@@ -22,8 +21,8 @@ class Comment(object):
 		pic["comments"].append(comment)
 		coll.save(pic)
 
-def loadComments(db, _id):
-	coll = self.pictures
+def loadComments(_id):
+	coll = db.pictures
 	query = {"_id": ObjectId(_id)}
 	pic = coll.find(query)
 	if pic:

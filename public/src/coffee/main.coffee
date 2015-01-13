@@ -1,3 +1,4 @@
-anotherModule = require "./another-module.coffee"
+Like = require "./add-like.coffee"
 
-anotherModule.changeH1Color()
+like = new Like()
+like.bindHandler()

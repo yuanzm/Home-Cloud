@@ -2,10 +2,10 @@
 # coding=utf-8
 import datetime
 from bson.objectid import ObjectId
+from db import db
 
 class Video(object):
-	def __init__(self, db, author, title):
-		self.db = db
+	def __init__(self, author, title):
 		self.author = author
 		self.title = title
 		now = datetime.datetime.now()
@@ -26,14 +26,14 @@ class Video(object):
 		return video
 
 	def saveVideo(self):
-		self.db.videos.insert(self.objectSelf())
+		db.videos.insert(self.objectSelf())
 
-def loadVideos(db):
+def loadVideos():
 	coll = db.videos
 	videos = coll.find()
 	return videos
 
-def getVideo(db, videoId):
+def getVideo(videoId):
 	coll = db.videos
 	query = {"_id": ObjectId(videoId)}
 	video = coll.find_one(query)

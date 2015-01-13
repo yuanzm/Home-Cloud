@@ -18,11 +18,6 @@ setting = dict(
     ui_modules = ui_modules
 )
 
-# application = tornado.web.Application(
-#     handlers=url,
-#     **setting
-# )
-
 class Application(tornado.web.Application):
     def __init__(self):
         handlers=url

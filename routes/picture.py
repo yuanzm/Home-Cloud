@@ -9,12 +9,14 @@ sys.path.append("./..")
 
 from models.Picture import Like
 
-class addLikeToPictureHandler(tornado.web.RequestHandler):
+class addLikeHandler(tornado.web.RequestHandler):
 	def post(self):
-		coll = self.application.db
-		likeNum = int(self.get_argument("likeNum", None))
-		author = self.get_argument("author", None)
-		title = self.get_argument("title", None)
-		time = self.get_argument("time", None)
-		like = Like(coll, author, title, time)
-		like.changeLike(likeNum)
+		db = self.application.db
+		myName = self.get_argument("myName")
+		dataId = self.get_argument("dataId")
+		dataType = self.get_argument("dataType")
+		likeChange = self.get_argument("likeChange")
+
+		like = Like(myName, dataId, dataType, likeChange)
+		like.changeLike()
+				
