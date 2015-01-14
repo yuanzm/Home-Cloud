@@ -4,6 +4,7 @@ $commentInput = $('#comment-input')
 $window = $(window)
 $allComment = $('#comments')
 
+
 addComment = (myName, dataId, dataType, commentText, callback)->
 	url = '/data/addcomment'
 	data =

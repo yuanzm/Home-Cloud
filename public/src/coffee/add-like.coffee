@@ -7,7 +7,7 @@ $likes = $('#likes')
 # @param {String} myName: A String indicating the name of user who click the `like` button
 # @param {String} dataId: A String indicating the id of the picture or video
 # @param {String} dataType: A String indicating type of the data
-# @param {Number} likeChange: A number indicating   
+# @param {Number} likeChange: A number indicating `add` like or `remove` like
 ###
 requestChangeLike = (myName, dataId, dataType, likeChange)->
 	url = '/data/changelike'
@@ -23,16 +23,31 @@ requestChangeLike = (myName, dataId, dataType, likeChange)->
 		success: (data)->
 	})
 
+###
+# show `login` alert
+###
 showLoginAlert = ->
 	alert('请先登录')
 
+###
+# A class for adding a like to a picture or a video
+###
 class Like
+	###
+	# init the Like
+	###
 	constructor: (@page)->
+	###
+	# Bind event handler for the `like-button` in different pages according to `page` value 
+	###
 	init: ->
 		if @page is 'data-list'
 			@bindHandler()
 		else
 			@detailPageBind()
+	###
+	# Event handler for `data-list` page
+	###
 	bindHandler: ->
 		$likeIcon.bind 'click', ->
 			if $myName.text()
@@ -52,6 +67,9 @@ class Like
 					$likeNum.text(Number(currentText) + 1)
 			else
 				showLoginAlert()
+	###
+	* Event handler for `data-detail` page
+	###
 	detailPageBind: ->
 		$likeButton.bind 'click', ->
 			if $myName.text()

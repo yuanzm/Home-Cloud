@@ -1,14 +1,18 @@
 #the-picture {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	img {
 		width: 100%;
 	}
-	video {
-		width: 100%;
+	#video {
+		#example_video_1 {
+			width: 100% !important; 
+		}
+		video {
+			width: 100%;
+		}
 	}
 }
-
 
 .click-button {
 	margin: 0 auto;
