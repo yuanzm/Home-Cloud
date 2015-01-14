@@ -11,6 +11,7 @@ from models.Picture import Like
 from models.Picture import Comment
 
 class addLikeHandler(tornado.web.RequestHandler):
+	"""  A class handler for the url `/data/changelike` request """
 	def post(self):
 		myName = self.get_argument("myName")
 		dataId = self.get_argument("dataId")
@@ -21,6 +22,7 @@ class addLikeHandler(tornado.web.RequestHandler):
 		like.changeLike()
 				
 class addCommentHandler(tornado.web.RequestHandler):
+	"""  A class handler for the url `/data/addcomment` request """
 	def post(self):
 		myName = self.get_argument("myName")
 		dataId = self.get_argument("dataId")

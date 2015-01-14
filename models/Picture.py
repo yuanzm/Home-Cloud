@@ -13,10 +13,9 @@ class Picture(object):
 	Some attributes maybe private,some maybe public.
 	
 	Attributes:
-        db: The database we operate
         author: A String indicating the picture's author
         title: A String descrip the picture briefly
-        time: A String indicating the picture's shooting time 
+        "link": A String indicating the picture's link
 
 	"""
 
@@ -63,19 +62,32 @@ def getPicture(picId):
 		return None
 
 def loadPicture():
+	""" Load all pictures from the database """
 	coll = db.pictures
 	pics = coll.find()
 	return pics
 
 class Like(object):
+	""" Add or remove a like to a picture or video
+
+	In order to improve the reusability of this function,operations on the pictures and videos are wrote together.
+	So we need to know the data's type before the operation
+	
+	Attributes:
+        author: A String indicating the data's author
+        title: A String descrip the data briefly
+		dataType: A String indicating the type of data
+		likeChange: A Number add to `like` attribute of the data,which equals to `1` or `-1` only
+	"""
 	def __init__(self, myName, dataId, dataType, likeChange):
+		"""Inits Picture."""
 		self.myName = myName
 		self.dataId = dataId
 		self.dataType = dataType
 		self.likeChange = likeChange
 
 	def changeLike(self):
-		""" Change the likes number for a picture or a video """
+		""" Change the value of a data's `likes` attribute """
 		if self.dataType == "pic":
 			coll = db.pictures
 		else:
@@ -94,13 +106,27 @@ class Like(object):
 		coll.save(data)
 
 class Comment(object):
+	""" Add a commnet to a picture or video
+
+	In order to improve the reusability of this function,operations on the pictures and videos are wrote together.
+	So we need to know the data's type before the operation
+	
+	Attributes:
+        myName: A String indicating the commenter's name
+        author: A String indicating the data's author
+        title: A String descrip the data briefly
+		dataType: A String indicating the type of data
+		commentText: A String indicating content of the commnet
+	"""
 	def __init__(self,myName, dataId, dataType, commentText):
+		"""Inits Comment."""
 		self.myName = myName
 		self.dataId = dataId
 		self.dataType = dataType
 		self.commentText = commentText
 
 	def addComment(self):
+		""" Add a comment to a picture or video """
 		if self.dataType == "pic":
 			coll = db.pictures
 		else:

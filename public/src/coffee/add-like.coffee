@@ -3,6 +3,12 @@ $likeIcon = $('.like-icon')
 $likeButton = $('.like-button')
 $likes = $('#likes')
 
+###
+# @param {String} myName: A String indicating the name of user who click the `like` button
+# @param {String} dataId: A String indicating the id of the picture or video
+# @param {String} dataType: A String indicating type of the data
+# @param {Number} likeChange: A number indicating   
+###
 requestChangeLike = (myName, dataId, dataType, likeChange)->
 	url = '/data/changelike'
 	data =
