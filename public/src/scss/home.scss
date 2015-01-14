@@ -2,6 +2,9 @@ html,body {
 	height: 100%;
 	width: 100%;
 }
+body {
+	font-family: "HelveticaNeueLT Pro 35", "Heiti SC", "Droid Sans Fallback", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
 #wrapper {
 	min-height:100%;
 	height: auto !important;

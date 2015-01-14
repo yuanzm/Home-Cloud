@@ -17,7 +17,7 @@ from routes.index import VideoHandler
 from routes.index import VideoDetailHandler
 
 from routes.picture import addLikeHandler
-
+from routes.picture import addCommentHandler
 
 url = [
     (r'/', IndexHandler),
@@ -29,5 +29,6 @@ url = [
     (r'/video/(\w+)', VideoDetailHandler),
     (r'/video', VideoHandler),
     (r'/data/changelike', addLikeHandler),
+    (r'/data/addcomment', addCommentHandler),
     (r'.*', HTTP404Error)
 ]

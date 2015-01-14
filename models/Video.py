@@ -5,14 +5,16 @@ from bson.objectid import ObjectId
 from db import db
 
 class Video(object):
-	def __init__(self, author, title):
+	def __init__(self, author, title, link):
 		self.author = author
 		self.title = title
+		self.link = link
 		now = datetime.datetime.now()
-		self.time = now.strftime("%Y-%m-%d %H:%M:%S")
+		self.time = now.strftime("%m-%d %H:%M:%S")
 		self.broadcast = 0
 		self.likes = 0
 		self.comments = []
+		self.likeperson = []
 
 	def objectSelf(self):
 		video = {
@@ -21,7 +23,9 @@ class Video(object):
 			"broadcast": self.broadcast,
 			"comments": self.comments,
 			"time": self.time,
-			"likes": self.likes
+			"likes": self.likes,
+			"link": self.link,
+			"likeperson": self.likeperson
 		}
 		return video
 

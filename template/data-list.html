@@ -7,10 +7,12 @@
   {% for i in range(0,datalist.count())%}  
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="heading{{i}}">
-      <h4 class="panel-title"  data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapse{{i}}">
-          {{datalist[i]["title"]}}
-          <span class="data-author">{{datalist[i]["author"]}}</span>
-          <span class="data-likes">{{datalist[i]["likes"]}}</span>
+      <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapse{{i}}">
+            {{datalist[i]["title"]}}
+            <span class="data-author">{{datalist[i]["author"]}}</span>
+            <span class="data-likes">{{datalist[i]["likes"]}}</span>
+          </a>
       </h4>
     </div>
     <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{i}}">

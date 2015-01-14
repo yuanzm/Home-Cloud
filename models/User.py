@@ -11,7 +11,7 @@ class User:
 		}
 
 	def saveUser(self):
-		self.db.user.insert(self.userInstance)
+		db.user.insert(self.userInstance)
 
 	def getUser(self):
 		coll = db.user

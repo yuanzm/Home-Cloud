@@ -20,10 +20,11 @@ class Picture(object):
 
 	"""
 
-	def __init__(self, author,title):
+	def __init__(self, author,title, link):
 		"""Inits Picture."""
 		self.author = author
 		self.title = title
+		self.link = link
 		now = datetime.datetime.now()
 		self.time = now.strftime("%Y-%m-%d %H:%M:%S")
 		self.likes = 0
@@ -40,7 +41,8 @@ class Picture(object):
 			"likes": self.likes,
 			"pv": self.pv,
 			"comments": self.comments,
-			"likeperson": self.likeperson
+			"likeperson": self.likeperson,
+			"link": self.link
 		}
 		return pic
 
@@ -90,3 +92,27 @@ class Like(object):
 			likePerson.remove(self.myName)
 		data["likeperson"] = likePerson
 		coll.save(data)
+
+class Comment(object):
+	def __init__(self,myName, dataId, dataType, commentText):
+		self.myName = myName
+		self.dataId = dataId
+		self.dataType = dataType
+		self.commentText = commentText
+
+	def addComment(self):
+		if self.dataType == "pic":
+			coll = db.pictures
+		else:
+			coll = db.videos
+
+		comment = {
+			"commenter": self.myName,
+			"content": self.commentText
+		}
+		query ={"_id":ObjectId(self.dataId)}
+		pic = coll.find_one(query)
+		com = pic["comments"] 
+		com.append(comment)
+		pic["comments"] = com
+		coll.save(pic)

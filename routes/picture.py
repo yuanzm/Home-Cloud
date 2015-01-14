@@ -8,10 +8,10 @@ import sys
 sys.path.append("./..")
 
 from models.Picture import Like
+from models.Picture import Comment
 
 class addLikeHandler(tornado.web.RequestHandler):
 	def post(self):
-		db = self.application.db
 		myName = self.get_argument("myName")
 		dataId = self.get_argument("dataId")
 		dataType = self.get_argument("dataType")
@@ -20,3 +20,12 @@ class addLikeHandler(tornado.web.RequestHandler):
 		like = Like(myName, dataId, dataType, likeChange)
 		like.changeLike()
 				
+class addCommentHandler(tornado.web.RequestHandler):
+	def post(self):
+		myName = self.get_argument("myName")
+		dataId = self.get_argument("dataId")
+		dataType = self.get_argument("dataType")
+		commentText = self.get_argument("commentText")
+		print myName
+		comment = Comment(myName, dataId, dataType, commentText)
+		comment.addComment()
