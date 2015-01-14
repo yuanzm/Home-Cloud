@@ -17,7 +17,6 @@ addComment = (myName, dataId, dataType, commentText, callback)->
 		url: url
 		data: data
 		success: ->
-			console.log 234234
 			callback()
 	})
 

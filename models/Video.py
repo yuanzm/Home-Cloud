@@ -11,7 +11,7 @@ class Video(object):
 		self.link = link
 		now = datetime.datetime.now()
 		self.time = now.strftime("%m-%d %H:%M:%S")
-		self.broadcast = 0
+		self.pv = 0
 		self.likes = 0
 		self.comments = []
 		self.likeperson = []
@@ -20,12 +20,12 @@ class Video(object):
 		video = {
 			"author": self.author,
 			"title": self.title,
-			"broadcast": self.broadcast,
 			"comments": self.comments,
 			"time": self.time,
 			"likes": self.likes,
 			"link": self.link,
-			"likeperson": self.likeperson
+			"likeperson": self.likeperson,
+			"pv": self.pv
 		}
 		return video
 
@@ -41,4 +41,7 @@ def getVideo(videoId):
 	coll = db.videos
 	query = {"_id": ObjectId(videoId)}
 	video = coll.find_one(query)
-	return video
+	if video:
+		video["pv"] += 1
+		coll.save(video)
+		return video

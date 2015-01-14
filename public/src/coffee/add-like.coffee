@@ -1,5 +1,7 @@
 $myName = $('#my-name')
 $likeIcon = $('.like-icon')
+$likeButton = $('.like-button')
+$likes = $('#likes')
 
 requestChangeLike = (myName, dataId, dataType, likeChange)->
 	url = '/data/changelike'
@@ -13,7 +15,6 @@ requestChangeLike = (myName, dataId, dataType, likeChange)->
 		url: url
 		data: data
 		success: (data)->
-			console.log data
 	})
 
 showLoginAlert = ->
@@ -22,7 +23,6 @@ showLoginAlert = ->
 class Like
 	constructor: (@page)->
 	init: ->
-		console.log @page
 		if @page is 'data-list'
 			@bindHandler()
 		else
@@ -30,7 +30,6 @@ class Like
 	bindHandler: ->
 		$likeIcon.bind 'click', ->
 			if $myName.text()
-				# $(@).toggleClass('liked')
 				$likeNum = $(@).parent().parent().parent()
 							.siblings('.panel-heading')
 							.find('.data-likes')
@@ -38,24 +37,28 @@ class Like
 				dataType = $(@).data('datatype')
 				id = $(@).data('id')
 				if $(@).hasClass('liked')
-					$(@).addClass('liked')
-					requestChangeLike($myName.text(), id, dataType, 1)
-					$likeNum.text(Number(currentText) + 1)
-				else
 					$(@).removeClass('liked')
 					requestChangeLike($myName.text(), id, dataType, -1)
 					$likeNum.text(Number(currentText) - 1)
+				else
+					$(@).addClass('liked')
+					requestChangeLike($myName.text(), id, dataType, 1)
+					$likeNum.text(Number(currentText) + 1)
 			else
 				showLoginAlert()
 	detailPageBind: ->
-		$likeIcon.bind 'click', ->
+		$likeButton.bind 'click', ->
 			if $myName.text()
 				dataType = $(@).data('datatype')
 				id = $(@).data('id')
-				$(@).toggleClass('liked')
+				currentIndex = $likes.text()
 				if $(@).hasClass('liked')
-					requestChangeLike($myName.text(), id, dataType, 1)
-				else
+					$(@).removeClass('liked').find('p').text('点赞 +1')
+					$likes.text( '赞 ' + (Number(currentIndex.slice(2, currentIndex.length)) - 1))					
 					requestChangeLike($myName.text(), id, dataType, -1)
-module.exports = Like
+				else
+					$(@).addClass('liked').find('p').text('已点赞')
+					$likes.text( '赞 ' + (Number(currentIndex.slice(2, currentIndex.length)) + 1))
+					requestChangeLike($myName.text(), id, dataType, 1)
 
+module.exports = Like

@@ -95,7 +95,6 @@ module.exports = (grunt) ->
 
 	grunt.registerTask "default", ->
 		grunt.task.run [
-			# "connect"
 			"clean:bin"
 			"browserify"
 			"sass"
@@ -104,7 +103,6 @@ module.exports = (grunt) ->
 
 	grunt.registerTask "build", ->
 		grunt.task.run [
-			"clean:bin"
 			"clean:dist"
 			"browserify"
 			"sass"
@@ -112,4 +110,5 @@ module.exports = (grunt) ->
 			"cssmin"
 			"uglify"
 			"copy"
+			"clean:bin"
 		]

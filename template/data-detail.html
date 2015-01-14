@@ -22,11 +22,11 @@
 		</div>
 		<div id="like">
 			{% if name in data["likeperson"] %}
-			<span class="like-btn click-button like-button liked">
+			<span class="like-btn click-button like-button liked" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
 				<p>已点赞</p>
 			</span>
 			{% else %}
-			<span class="like-btn click-button like-button">
+			<span class="like-btn click-button like-button" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
 				<p>点赞 +1</p>
 			</span>
 			{% end %}
@@ -41,7 +41,7 @@
 				<span>{{data["pv"]}}</span>
 				{% else %}
 				<span>播放</span>
-				<span>{{data["broadcast"]}}</span>
+				<span>{{data["pv"]}}</span>
 				{% end %}
 			</li>
 			<li id="time">
