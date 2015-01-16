@@ -15,7 +15,6 @@ from models.Picture import loadPicture
 from models.Video import Video
 from models.Video import getVideo
 from models.Video import loadVideos
-from models.Comment import Comment
 
 class HTTP404Error(tornado.web.ErrorHandler):
     """ A class handler the not existed url request"""

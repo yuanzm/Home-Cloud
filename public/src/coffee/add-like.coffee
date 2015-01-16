@@ -1,6 +1,6 @@
 $myName = $('#my-name')
 $likeIcon = $('.like-icon')
-$likeButton = $('.like-button')
+$likeButton = $('.detail-like-button')
 $likes = $('#likes')
 
 ###
@@ -84,5 +84,7 @@ class Like
 					$(@).addClass('liked').find('p').text('已点赞')
 					$likes.text( '赞 ' + (Number(currentIndex.slice(2, currentIndex.length)) + 1))
 					requestChangeLike($myName.text(), id, dataType, 1)
+			else
+				showLoginAlert()
 
 module.exports = Like

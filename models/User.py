@@ -2,6 +2,17 @@
 # coding=utf-8
 
 from db import db
+import hashlib
+import types
+
+def md5(str):
+	""" md5 hash function for password """
+	if type(str) is types.StringType:
+		m = hashlib.md5()   
+		m.update(str)
+		return m.hexdigest()
+	else:
+		return ''
 
 class User:
 	""" Add a user to the collection `user`
@@ -12,9 +23,10 @@ class User:
 	"""
 	def __init__(self, name, password):
 		""" init the User """
+		psw = md5('password')
 		self.userInstance = {
 			"name": name,
-			"password": password
+			"password": psw
 		}
 
 	def saveUser(self):

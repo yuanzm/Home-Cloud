@@ -1,5 +1,6 @@
 #the-picture {
 	width: 90%;
+	min-height: 100px;
 	margin: 0 auto;
 	img {
 		width: 100%;
@@ -35,7 +36,6 @@
 		line-height: 1.5;
 	}
 }
-
 .click-button.liked {
 	background-color: #4C99C8;
 	p {

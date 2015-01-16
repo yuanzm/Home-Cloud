@@ -23,11 +23,11 @@
 		</div>
 		<div id="like">
 			{% if name in data["likeperson"] %}
-			<span class="like-btn click-button like-button liked" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
+			<span class="like-btn click-button detail-like-button liked" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
 				<p>已点赞</p>
 			</span>
 			{% else %}
-			<span class="like-btn click-button like-button" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
+			<span class="like-btn click-button detail-like-button" data-datatype="{{dataType}}" data-id="{{data["_id"]}}">
 				<p>点赞 +1</p>
 			</span>
 			{% end %}
@@ -57,9 +57,16 @@
 				<p>留言</p>
 			</span>
 		</div>
+		{% if len(data["comments"]) > 0 %}
 		<div class="comment-text">
 			<p>评论</p>
 		</div>
+		{% else %}
+		<div class="comment-text hide">
+			<p>评论</p>
+		</div>
+		{% end %}
+
 		<ul id="comments">
 			{% for i in range(0,len(data["comments"])) %}
 				<li>
