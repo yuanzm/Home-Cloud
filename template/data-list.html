@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 
 {% block main %}
-	{% module Logo()%}
+	{% module Logo(title)%}
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <p></p>
   {% for i in range(0,datalist.count())%}  
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="heading{{i}}">

@@ -3,6 +3,11 @@
 
 from models.Picture import Picture
 from models.Video import Video
+from models.db import db
+
+# remove records in database
+db.pictures.remove()
+db.videos.remove()
 
 pictures = [
 	{"author": "爸爸", "title": "今天天气真好", "link": "http://lorempixel.com/output/city-q-c-640-480-10.jpg"},
@@ -14,7 +19,8 @@ pictures = [
 ]
 
 videos = [
-	{"author": "爸爸", "title": "今天天气真好", "link": "http://video-js.zencoder.com/oceans-clip"}
+	{"author": "爸爸", "title": "今天天气真好", "link": "http://video-js.zencoder.com/oceans-clip"},
+	{"author": "妈妈", "title": "海鸥好漂亮", "link": "http://video-js.zencoder.com/oceans-clip"}
 ]
 
 
@@ -25,3 +31,4 @@ for picture in pictures:
 for video in videos:
 	avideo = Video(video["author"], video["title"], video["link"])
 	avideo.saveVideo()
+	

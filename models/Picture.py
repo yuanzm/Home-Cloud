@@ -2,6 +2,7 @@
 # coding=utf-8
 
 import datetime
+import pymongo
 from bson.objectid import ObjectId
 
 from db import db
@@ -64,7 +65,7 @@ def getPicture(picId):
 def loadPicture():
 	""" Load all pictures from the database """
 	coll = db.pictures
-	pics = coll.find()
+	pics = coll.find().sort("likes", pymongo.DESCENDING)
 	return pics
 
 class Like(object):

@@ -65,8 +65,9 @@ header {
 
 #logo-bg {
   width: 100%;
-  height: 150px;
-  background: url(./../../asserts/images/logo.png) center no-repeat; }
+  text-align: center; }
+  #logo-bg p {
+    margin-top: 10px; }
 
 #sign form.sign {
   width: 70%;
@@ -84,6 +85,9 @@ footer {
   text-align: center;
   position: absolute;
   bottom: 0; }
+
+#accordion {
+  margin-top: 30px; }
 
 .panel-group .panel-heading .data-likes {
   float: right;

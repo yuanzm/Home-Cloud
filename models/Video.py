@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 import datetime
+import pymongo
 from bson.objectid import ObjectId
 from db import db
 
@@ -47,7 +48,7 @@ class Video(object):
 def loadVideos():
 	""" Load all videos in the database """
 	coll = db.videos
-	videos = coll.find()
+	videos = coll.find().sort("likes", pymongo.DESCENDING)
 	return videos
 
 def getVideo(videoId):

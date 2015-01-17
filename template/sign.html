@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block main %}
-   	{% module Logo()%}
-
    	{% if signType is "login"%}	
+        {% module Logo("Login")%}
    		{% module Sign(False)%}
    	{% else %}
+        {% module Logo("Regist")%}
    		{% module Sign(True)%}
    	{% end %}
 {% end %}

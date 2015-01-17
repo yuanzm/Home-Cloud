@@ -51,7 +51,7 @@ class RegistHandler(tornado.web.RequestHandler):
             if exist is False:
                 user = User(name, password)
                 user.saveUser()
-                self.set_secure_cookie("user", name)
+                self.set_secure_cookie("user", name, httponly = True, secure = True)
                 self.redirect('/')
             else:
                 self.redirect('/regist')
@@ -72,7 +72,7 @@ class LoginHandler(tornado.web.RequestHandler):
         password = self.get_argument("password", None)
         user = User(name, password)
         if user.getUser():
-            self.set_secure_cookie("user", name)
+            self.set_secure_cookie("user", name, httponly = True, secure = True)
             self.redirect('/')
         else:
             self.redirect('/login')
@@ -80,7 +80,7 @@ class LoginHandler(tornado.web.RequestHandler):
 class LogoutHandler(tornado.web.RequestHandler):
     """  A class handler for the url `/logout` request """
     def get(self):
-        self.set_secure_cookie("user", '')
+        self.set_secure_cookie("user", '', httponly = True, secure = True)
         self.redirect('/')
 
 class PicHandler(tornado.web.RequestHandler):

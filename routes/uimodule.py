@@ -11,8 +11,8 @@ class HeaderModule(tornado.web.UIModule):
 
 class LogoModule(tornado.web.UIModule):
 	"""Logo's UI module"""
-	def render(self):
-		return self.render_string('modules/logo.html')
+	def render(self, title):
+		return self.render_string('modules/logo.html', title=title)
 
 class FooterModule(tornado.web.UIModule):
 	"""Footer's UI module"""
