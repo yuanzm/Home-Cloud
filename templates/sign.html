@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block main %}
+   	{% if signType is "login"%}	
+        {% module Logo("Login")%}
+   		{% module Sign(False)%}
+   	{% else %}
+        {% module Logo("Regist")%}
+   		{% module Sign(True)%}
+   	{% end %}
+{% end %}
+
+{% block footer %}
+   {% module Footer() %}
+{% end %}

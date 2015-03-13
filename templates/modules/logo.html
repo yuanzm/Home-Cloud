@@ -1,0 +1,22 @@
+<!-- The logo module in all pages   -->
+<div id="logo-bg">
+    <img src="{{static_url("asserts/images/logo.png")}}" alt="">
+    {% if title is "Regist" %}
+    <p>欢迎加入温馨的大家庭</p>
+    {% else %}
+        {% if title is "Login" %}
+        <p>登录去给家人们点赞吧</p>
+        {% else %}
+            {% if title is "Picture" %}
+            <p>查看家人精彩的瞬间</p>
+            {% else %}
+                {% if title is "video" %}
+                <p>看看家人身边的趣事</p>
+                {% else %}
+                <p>家庭云,让您的家庭更有爱</p>
+                {% end %}
+            {% end %}
+        {% end%}
+    {% end %}
+</div>
+

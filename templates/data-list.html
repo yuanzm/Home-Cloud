@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block main %}
+	{% module Logo(title)%}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <p></p>
+  {% for i in range(0,datalist.count())%}  
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading{{i}}">
+      <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}" aria-expanded="true" aria-controls="collapse{{i}}">
+            {{datalist[i]["title"]}}
+            <span class="data-author">({{datalist[i]["author"]}})</span>
+            <span class="data-likes">{{datalist[i]["likes"]}}</span>
+          </a>
+      </h4>
+    </div>
+    <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{i}}">
+      <div class="panel-body">
+        <div class="edit-button operate-button">
+            <a href="/{{dataType}}/{{datalist[i]["_id"]}}">
+            <span class="glyphicon glyphicon-edit"></span>          
+            </a>
+        </div>
+        <div class="like-button operate-button">
+            {% if name in datalist[i]["likeperson"]%}
+            <span class="glyphicon glyphicon-thumbs-up like-icon liked" data-datatype="{{dataType}}" data-id="{{datalist[i]["_id"]}}"></span>
+            {% else %}
+            <span class="glyphicon glyphicon-thumbs-up like-icon" data-datatype="{{dataType}}" data-id="{{datalist[i]["_id"]}}"></span>
+            {% end %}
+        </div> 
+      </div>
+    </div>
+  </div>
+  {% end %}
+</div>
+{% end %}
+
+{% block footer %}
+	{% module Footer() %}
+{% end %}

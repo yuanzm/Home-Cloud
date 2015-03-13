@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block main %}
+	{% module Logo("home")%}
+	<div id="menu-logo">
+		<div class="logo-set">
+			<div class="a-menu-logo">
+				<a href="/pic">
+					<img class="pic-logo" src="{{static_url("asserts/images/pic-logo.jpg")}}" alt="pic-logo">				
+				</a>
+			</div>
+			<div class="a-menu-logo">
+				<a href="/video">
+					<img class="video-logo" src="{{static_url("asserts/images/video-logo.jpg")}}" alt="video-logo">	
+				</a>				
+			</div>
+		</div>
+	</div>
+{% end %}
+
+{% block footer %}
+   {% module Footer() %}
+{% end %}

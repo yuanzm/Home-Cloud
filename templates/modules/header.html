@@ -1,0 +1,35 @@
+<!-- The header module in all pages   -->
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" 
+         data-target="#example-navbar-collapse">
+         <span class="sr-only">切换导航</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">HomeCloud</a>
+   </div>
+   <div class="collapse navbar-collapse" id="example-navbar-collapse">
+      <ul class="nav navbar-nav">
+         {% if name %}
+         <li id="my-name"><a href="/">{{name}}</a></li>
+         <li><a href="/logout">退出</a></li>
+         {% else %}
+
+            {% if page is "signup" %}
+            <li class="active"><a href="/regist">注册</a></li>
+            <li><a href="/login">登陆</a></li>
+            {% else %}
+               {% if page is "login" %}
+               <li><a href="/regist">注册</a></li>
+               <li class="active"><a href="/login">登陆</a></li>
+               {% else %}
+               <li><a href="/regist">注册</a></li>
+               <li><a href="/login">登陆</a></li>
+               {% end %}
+            {% end %}
+         {% end %}
+      </ul>
+   </div>
+</nav>
